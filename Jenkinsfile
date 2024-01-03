@@ -3,6 +3,7 @@ pipeline {
     agent any
     environment{
           PASS = credentials('registry-pass')
+	  PROD_IP = sh(script: 'echo $PROD_IP', returnStdout: true).trim()
     }
     stages {
         stage('Build') {
