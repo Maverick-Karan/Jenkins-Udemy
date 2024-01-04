@@ -6,8 +6,8 @@ echo $BUILD_TAG >> /tmp/.auth
 
 chmod 400 prod
 
-scp -i prod /tmp/.auth prod-user@PROD_IP:/tmp/.auth
-scp -i prod publish.sh prod-user@PROD_IP:/tmp/publish.sh
+scp -i prod /tmp/.auth prod-user@${PROD_IP}:/tmp/.auth
+scp -i prod publish.sh prod-user@${PROD_IP}:/tmp/publish.sh
 
-ssh -i prod prod-user@PROD_IP "/tmp/publish.sh"
+ssh -i prod prod-user@${PROD_IP} "/tmp/publish.sh"
 
