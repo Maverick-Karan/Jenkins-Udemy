@@ -3,7 +3,6 @@ pipeline {
     agent any
     environment{
           PASS = credentials('registry-pass')
-	  PROD_IP = sh(script: 'echo $PROD_IP', returnStdout: true).trim()
     }
     stages {
         stage('Build') {
@@ -40,7 +39,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh './jenkins/deploy/deploy.sh'
+                sh "./jenkins/deploy/deploy.sh ${params.PROD_IP}"
             }
         }
     }
